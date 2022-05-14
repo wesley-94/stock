@@ -4,7 +4,6 @@ import com.wesley.stock.domain.posts.Posts;
 import com.wesley.stock.domain.posts.PostsRepository;
 import com.wesley.stock.web.dto.PostsSaveRequestDto;
 import com.wesley.stock.web.dto.PostsUpdateRequestDto;
-import org.apache.coyote.Response;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -68,11 +67,11 @@ public class PostsApiControllerTest {
         String url = "http://localhost:" + port + "/api/v1/posts";
 
         // when
-        // ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
+        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
 
         // then
-        // assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        // assertThat(responseEntity.getBody()).isGreaterThan(0L);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getStockName()).isEqualTo(stockName);

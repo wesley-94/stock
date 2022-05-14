@@ -2,8 +2,9 @@ package com.wesley.stock.domain.posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PostsRepository extends JpaRepository<Posts, Long> {
+import javax.persistence.EntityManager;
+import java.util.List;
 
-    // 추가 예정
+public interface PostsRepository extends JpaRepository<Posts, Long> {
 
 }
