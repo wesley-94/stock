@@ -1,5 +1,7 @@
 package com.wesley.stock.web;
 
+import com.wesley.stock.config.auth.LoginUser;
+import com.wesley.stock.config.auth.dto.SessionUser;
 import com.wesley.stock.service.posts.PostsService;
 import com.wesley.stock.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -8,15 +10,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAll());
+
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
 
         return "index";
     }

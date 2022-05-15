@@ -3,9 +3,18 @@
     <h1>주식 종목 제공 서비스</h1>
     <hr>
     <div class="col-md-12">
+        <!-- 로그인 기능 영역 -->
         <div class="row">
             <div class="col-md-6">
                 <a href="/posts/save" role="button" class="btn btn-primary">주식 종목 등록</a>
+                {{#userName}}
+                    Logged in as : <span id="user">{{userName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                {{/userName}}
+                {{^userName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+                {{/userName}}
             </div>
         </div>
         <br>
@@ -38,7 +47,6 @@
                     <td>{{estimatePER}}</td>
                     <td>{{PBR}}</td>
                     <td>{{dividendRate}}</td>
-                    <td>{{modifiedDate}}</td>
                     <td>{{modifiedDate}}</td>
                 </tr>
             {{/posts}}
