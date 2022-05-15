@@ -1,12 +1,49 @@
-{{>layout>header}}
+{{>layout/header}}
 
     <h1>주식 종목 제공 서비스</h1>
+    <hr>
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-6">
                 <a href="/posts/save" role="button" class="btn btn-primary">주식 종목 등록</a>
             </div>
         </div>
+        <br>
+        <!-- 목록 출력 영역 -->
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <th>주식 종목</th>
+                <th>섹터</th>
+                <th>현재가</th>
+                <th>52주 최고가</th>
+                <th>52주 최저가</th>
+                <th>PER</th>
+                <th>추정 PER</th>
+                <th>PBR</th>
+                <th>배당 수익률</th>
+                <th>최종 수정일</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#posts}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td><a href="/posts/update/{{id}}">{{stockName}}</a></td>
+                    <td>{{sector}}</td>
+                    <td>{{currentPrice}}</td>
+                    <td>{{allTimeHighPrice}}</td>
+                    <td>{{allTimeLowPrice}}</td>
+                    <td>{{PER}}</td>
+                    <td>{{estimatePER}}</td>
+                    <td>{{PBR}}</td>
+                    <td>{{dividendRate}}</td>
+                    <td>{{modifiedDate}}</td>
+                    <td>{{modifiedDate}}</td>
+                </tr>
+            {{/posts}}
+            </tbody>
+        </table>
     </div>
 
-{{>layout>footer}}
+{{>layout/footer}}

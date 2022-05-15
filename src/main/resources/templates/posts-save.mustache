@@ -1,0 +1,50 @@
+{{>layout/header}}
+
+<h1>주식 종목 등록</h1>
+<hr>
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="stockName">주식 종목</label>
+                <input type="text" class="form-control" id="stockName" placeholder="이름을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="sector">섹터</label>
+                <input type="text" class="form-control" id="sector" placeholder="내용을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="currentPrice">현재가</label>
+                <input type="number" class="form-control" id="currentPrice" placeholder="내용을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="allTimeHighPrice">52주 최고가</label>
+                <input type="number" class="form-control" id="allTimeHighPrice" placeholder="내용을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="allTimeLowPrice">52주 최저가</label>
+                <input type="number" class="form-control" id="allTimeLowPrice" placeholder="내용을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="PER">PER</label>
+                <input type="number" step="0.01" class="form-control" id="PER" placeholder="내용을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="estimatePER">추정 PER</label>
+                <input type="number" step="0.01" class="form-control" id="estimatePER" placeholder="내용을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="PBR">PBR</label>
+                <input type="number" step="0.01" class="form-control" id="PBR" placeholder="내용을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="dividendRate">배당 수익률</label>
+                <input type="number" step="0.01" class="form-control" id="dividendRate" placeholder="내용을 입력하세요">
+            </div>
+        </form>
+        <a href="/" role="button" class="btn btn-secondary">취소</a>
+        <button type="button" class="btn btn-primary" id="btn-save">등록</button>
+    </div>
+</div>
+
+{{>layout/footer}}
