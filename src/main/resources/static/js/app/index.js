@@ -6,11 +6,11 @@ var main = {
             _this.save();
         });
 
-        ${'#btn-update'}.on('click', function () {
+        $('#btn-update').on('click', function () {
             _this.update();
         });
 
-        ${'#btn-delete'}.on('click', function () {
+        $('#btn-delete').on('click', function () {
             _this.delete();
         });
     },
@@ -22,9 +22,9 @@ var main = {
             currentPrice: $('#currentPrice').val(),
             allTimeHighPrice: $('#allTimeHighPrice').val(),
             allTimeLowPrice: $('#allTimeLowPrice').val(),
-            PER: $('#PER').val(),
+            priceEarningRatio: $('#priceEarningRatio').val(),
             estimatePER: $('#estimatePER').val(),
-            PBR: $('#PBR').val(),
+            priceBookValueRatio: $('#priceBookValueRatio').val(),
             dividendRate: $('#dividendRate').val()
         };
 
@@ -40,7 +40,6 @@ var main = {
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
-        ;
     },
 
     update : function () {
@@ -50,17 +49,17 @@ var main = {
             currentPrice: $('#currentPrice').val(),
             allTimeHighPrice: $('#allTimeHighPrice').val(),
             allTimeLowPrice: $('#allTimeLowPrice').val(),
-            PER: $('#PER').val(),
+            priceEarningRatio: $('#priceEarningRatio').val(),
             estimatePER: $('#estimatePER').val(),
-            PBR: $('#PBR').val(),
+            priceBookValueRatio: $('#priceBookValueRatio').val(),
             dividendRate: $('#dividendRate').val()
         };
 
-        var id = $('id').val();
+        var id = $('#id').val();
 
         $.ajax({
             type: 'PUT',
-            url: '/api/v1/posts' + id,
+            url: '/api/v1/posts/' + id,
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
@@ -73,7 +72,7 @@ var main = {
     },
 
     delete : function () {
-        var id = $('id').val();
+        var id = $('#id').val();
 
         $.ajax({
             type: 'DELETE',

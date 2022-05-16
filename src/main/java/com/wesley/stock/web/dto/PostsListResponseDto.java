@@ -13,9 +13,9 @@ public class PostsListResponseDto {
     private int currentPrice;
     private int allTimeHighPrice;
     private int allTimeLowPrice;
-    private double PER;
+    private double priceEarningRatio;
     private double estimatePER;
-    private double PBR;
+    private double priceBookValueRatio;
     private double dividendRate;
     private LocalDateTime modifiedDate;
 
@@ -26,9 +26,9 @@ public class PostsListResponseDto {
         this.currentPrice = entity.getCurrentPrice();
         this.allTimeHighPrice = entity.getAllTimeHighPrice();
         this.allTimeLowPrice = entity.getAllTimeLowPrice();
-        this.PER = entity.getPER();
+        this.priceEarningRatio = entity.getPriceEarningRatio();
         this.estimatePER = entity.getEstimatePER();
-        this.PBR = entity.getPBR();
+        this.priceBookValueRatio = entity.getPriceBookValueRatio();
         this.dividendRate = entity.getDividendRate();
         this.modifiedDate = entity.getModifiedDate();
     }

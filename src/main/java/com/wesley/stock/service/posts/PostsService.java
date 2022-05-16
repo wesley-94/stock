@@ -34,9 +34,9 @@ public class PostsService {
                 requestDto.getCurrentPrice(),
                 requestDto.getAllTimeHighPrice(),
                 requestDto.getAllTimeLowPrice(),
-                requestDto.getPER(),
+                requestDto.getPriceEarningRatio(),
                 requestDto.getEstimatePER(),
-                requestDto.getPBR(),
+                requestDto.getPriceBookValueRatio(),
                 requestDto.getDividendRate());
 
         return id;

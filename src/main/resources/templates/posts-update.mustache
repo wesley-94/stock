@@ -7,43 +7,43 @@
         <form>
             <div class="form-group">
                 <label for="id">주식 종목 번호</label>
-                <input type="text" class="form-control" id="id" value="{{post.id}}"readonly>
+                <input type="text" class="form-control" id="id" value="{{post.id}}" readonly>
             </div>
             <div class="form-group">
                 <label for="stockName">주식 종목</label>
-                <input type="text" class="form-control" id="{{post.stockName}}" placeholder="이름을 입력하세요">
+                <input type="text" class="form-control" id="stockName" value="{{post.stockName}}" readonly>
             </div>
             <div class="form-group">
                 <label for="sector">섹터</label>
-                <input type="text" class="form-control" id="{{post.sector}}" placeholder="내용을 입력하세요">
+                <input type="text" class="form-control" id="sector" value="{{post.sector}}" readonly>
             </div>
             <div class="form-group">
                 <label for="currentPrice">현재가</label>
-                <input type="number" class="form-control" id="{{post.currentPrice}}" placeholder="내용을 입력하세요">
+                <input type="number" class="form-control" id="currentPrice" value="{{post.currentPrice}}">
             </div>
             <div class="form-group">
                 <label for="allTimeHighPrice">52주 최고가</label>
-                <input type="number" class="form-control" id="{{post.allTimeHighPrice}}" placeholder="내용을 입력하세요">
+                <input type="number" class="form-control" id="allTimeHighPrice" value="{{post.allTimeHighPrice}}">
             </div>
             <div class="form-group">
                 <label for="allTimeLowPrice">52주 최저가</label>
-                <input type="number" class="form-control" id="{{post.allTimeLowPrice}}" placeholder="내용을 입력하세요">
+                <input type="number" class="form-control" id="allTimeLowPrice" value="{{post.allTimeLowPrice}}">
             </div>
             <div class="form-group">
-                <label for="PER">PER</label>
-                <input type="number" step="0.01" class="form-control" id="{{post.PER}}" placeholder="내용을 입력하세요">
+                <label for="priceEarningRatio">주가 수익 비율</label>
+                <input type="number" step="0.01" class="form-control" id="priceEarningRatio" value="{{post.priceEarningRatio}}">
             </div>
             <div class="form-group">
-                <label for="estimatePER">추정 PER</label>
-                <input type="number" step="0.01" class="form-control" id="{{post.estimatePER}}" placeholder="내용을 입력하세요">
+                <label for="estimatePER">추정 주가 수익 비율</label>
+                <input type="number" step="0.01" class="form-control" id="estimatePER" value="{{post.estimatePER}}">
             </div>
             <div class="form-group">
-                <label for="PBR">PBR</label>
-                <input type="number" step="0.01" class="form-control" id="{{post.PBR}}" placeholder="내용을 입력하세요">
+                <label for="priceBookValueRatio">주가 순자산 비율</label>
+                <input type="number" step="0.01" class="form-control" id="priceBookValueRatio" value="{{post.priceBookValueRatio}}">
             </div>
             <div class="form-group">
                 <label for="dividendRate">배당 수익률</label>
-                <input type="number" step="0.01" class="form-control" id="{{post.dividendRate}}" placeholder="내용을 입력하세요">
+                <input type="number" step="0.01" class="form-control" id="dividendRate" value="{{post.dividendRate}}">
             </div>
         </form>
         <a href="/" role="button" class="btn btn-secondary">취소</a>

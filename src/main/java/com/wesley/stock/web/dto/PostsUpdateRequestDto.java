@@ -13,21 +13,21 @@ public class PostsUpdateRequestDto {
     private int currentPrice;
     private int allTimeHighPrice;
     private int allTimeLowPrice;
-    private double PER;
+    private double priceEarningRatio;
     private double estimatePER;
-    private double PBR;
+    private double priceBookValueRatio;
     private double dividendRate;
 
     @Builder
-    public PostsUpdateRequestDto(String stockName, String sector, int currentPrice, int allTimeHighPrice, int allTimeLowPrice, double PER, double estimatePER, double PBR, double dividendRate) {
+    public PostsUpdateRequestDto(String stockName, String sector, int currentPrice, int allTimeHighPrice, int allTimeLowPrice, double priceEarningRatio, double estimatePER, double priceBookValueRatio, double dividendRate) {
         this.stockName = stockName;
         this.sector = sector;
         this.currentPrice = currentPrice;
         this.allTimeHighPrice = allTimeHighPrice;
         this.allTimeLowPrice = allTimeLowPrice;
-        this.PER = PER;
+        this.priceEarningRatio = priceEarningRatio;
         this.estimatePER = estimatePER;
-        this.PBR = PBR;
+        this.priceBookValueRatio = priceBookValueRatio;
         this.dividendRate = dividendRate;
     }
 

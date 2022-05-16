@@ -68,9 +68,9 @@ public class PostsApiControllerTest {
         int currentPrice = 180000;
         int allTimeHighPrice = 249000;
         int allTimeLowPrice = 162000;
-        double PER = 10.11;
+        double priceEarningRatio = 10.11;
         double estimatePER = 7.44;
-        double PBR = 0.62;
+        double priceBookValueRatio = 0.62;
         double dividendRate = 2.77;
 
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
@@ -79,9 +79,9 @@ public class PostsApiControllerTest {
                 .currentPrice(currentPrice)
                 .allTimeHighPrice(allTimeHighPrice)
                 .allTimeLowPrice(allTimeLowPrice)
-                .PER(PER)
+                .priceEarningRatio(priceEarningRatio)
                 .estimatePER(estimatePER)
-                .PBR(PBR)
+                .priceBookValueRatio(priceBookValueRatio)
                 .dividendRate(dividendRate)
                 .build();
 
@@ -100,9 +100,9 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getCurrentPrice()).isEqualTo(currentPrice);
         assertThat(all.get(0).getAllTimeHighPrice()).isEqualTo(allTimeHighPrice);
         assertThat(all.get(0).getAllTimeLowPrice()).isEqualTo(allTimeLowPrice);
-        assertThat(all.get(0).getPER()).isEqualTo(PER);
+        assertThat(all.get(0).getPriceEarningRatio()).isEqualTo(priceEarningRatio);
         assertThat(all.get(0).getEstimatePER()).isEqualTo(estimatePER);
-        assertThat(all.get(0).getPBR()).isEqualTo(PBR);
+        assertThat(all.get(0).getPriceBookValueRatio()).isEqualTo(priceBookValueRatio);
         assertThat(all.get(0).getDividendRate()).isEqualTo(dividendRate);
     }
 
@@ -116,9 +116,9 @@ public class PostsApiControllerTest {
                 .currentPrice(180000)
                 .allTimeHighPrice(249000)
                 .allTimeLowPrice(162000)
-                .PER(10.11)
+                .priceEarningRatio(10.11)
                 .estimatePER(7.44)
-                .PBR(0.62)
+                .priceBookValueRatio(0.62)
                 .dividendRate(2.77)
                 .build());
 
@@ -128,9 +128,9 @@ public class PostsApiControllerTest {
         int expectedCurrentPrice = 190000;
         int expectedAllTimeHighPrice = 259000;
         int expectedAllTimeLowPrice = 172000;
-        double expectedPER = 11.11;
+        double expectedPer = 11.11;
         double expectedEstimatedPER = 8.44;
-        double expectedPBR = 1.62;
+        double expectedPbr = 1.62;
         double expectedDividendRate = 3.77;
 
         PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
@@ -139,9 +139,9 @@ public class PostsApiControllerTest {
                 .currentPrice(expectedCurrentPrice)
                 .allTimeHighPrice(expectedAllTimeHighPrice)
                 .allTimeLowPrice(expectedAllTimeLowPrice)
-                .PER(expectedPER)
+                .priceEarningRatio(expectedPer)
                 .estimatePER(expectedEstimatedPER)
-                .PBR(expectedPBR)
+                .priceBookValueRatio(expectedPbr)
                 .dividendRate(expectedDividendRate)
                 .build();
 
@@ -162,9 +162,9 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getCurrentPrice()).isEqualTo(expectedCurrentPrice);
         assertThat(all.get(0).getAllTimeHighPrice()).isEqualTo(expectedAllTimeHighPrice);
         assertThat(all.get(0).getAllTimeLowPrice()).isEqualTo(expectedAllTimeLowPrice);
-        assertThat(all.get(0).getPER()).isEqualTo(expectedPER);
+        assertThat(all.get(0).getPriceEarningRatio()).isEqualTo(expectedPer);
         assertThat(all.get(0).getEstimatePER()).isEqualTo(expectedEstimatedPER);
-        assertThat(all.get(0).getPBR()).isEqualTo(expectedPBR);
+        assertThat(all.get(0).getPriceBookValueRatio()).isEqualTo(expectedPbr);
         assertThat(all.get(0).getDividendRate()).isEqualTo(expectedDividendRate);
     }
 
