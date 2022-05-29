@@ -4,6 +4,7 @@ import com.wesley.stock.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 
@@ -22,8 +23,11 @@ public class Posts extends BaseTimeEntity {
     @Column(nullable = false)
     private String sector;
 
+    @NumberFormat(pattern = "###,###")
     private int currentPrice;
+    @NumberFormat(pattern = "###,###")
     private int allTimeHighPrice;
+    @NumberFormat(pattern = "###,###")
     private int allTimeLowPrice;
     private double priceEarningRatio;
     private double estimatePER;

@@ -55,9 +55,9 @@ public class PostsRepositoryTest {
                 .currentPrice(180000)
                 .allTimeHighPrice(249000)
                 .allTimeLowPrice(162000)
-                .PER(10.11)
+                .priceEarningRatio(10.11)
                 .estimatePER(7.44)
-                .PBR(0.62)
+                .priceBookValueRatio(0.62)
                 .dividendRate(2.77)
                 .build());
 
