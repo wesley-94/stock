@@ -21,8 +21,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-mustache'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
 	implementation 'org.springframework.session:spring-session-jdbc'
 	implementation 'junit:junit:4.13.1'
 
@@ -33,6 +35,7 @@ dependencies {
 	implementation group: 'org.slf4j', name: 'jul-to-slf4j', version: '1.7.32'
 
 	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
