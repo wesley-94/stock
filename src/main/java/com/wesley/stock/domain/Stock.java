@@ -1,8 +1,10 @@
 package com.wesley.stock.domain;
 
+import com.wesley.stock.exception.NotEnoughStockException;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
@@ -12,7 +14,7 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
-@Getter
+@Getter @Setter
 @NoArgsConstructor
 public abstract class Stock {
 
@@ -36,6 +38,7 @@ public abstract class Stock {
     private double estimatePER;
     private double priceBookValueRatio;
     private double dividendRate;
+    private int quantity;
 
     @ManyToMany(mappedBy = "stocks")
     private List<Category> categories = new ArrayList<Category>();
@@ -63,6 +66,19 @@ public abstract class Stock {
         this.estimatePER = estimatePER;
         this.priceBookValueRatio = priceBookValueRatio;
         this.dividendRate = dividendRate;
+    }
+
+    // == 비즈니스 로직 == //
+    public void addStock(int addQuantity) {
+        this.quantity += addQuantity;
+    }
+
+    public void removeStock(int removeQuantity) {
+        int restQuantity = this.quantity - removeQuantity;
+        if (restQuantity < 0) {
+            throw new NotEnoughStockException("need more stock");
+        }
+        this.quantity = restQuantity;
     }
 
 }

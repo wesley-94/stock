@@ -1,11 +1,12 @@
 package com.wesley.stock.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Getter
+@Getter @Setter
 public class Company {
 
     @Id @GeneratedValue
