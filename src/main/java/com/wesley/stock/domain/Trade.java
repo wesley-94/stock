@@ -14,7 +14,7 @@ import java.util.List;
 public class Trade {
 
     @Id @GeneratedValue
-    @Column(name = "account_id")
+    @Column(name = "trade_id")
     private Long id;
     
     @ManyToOne(fetch = FetchType.LAZY)
@@ -48,5 +48,46 @@ public class Trade {
         this.company = company;
         company.setTrade(this);
     }
+
+    // == 생성 메서드 == //
+    public static Trade createTrade(Member member, Company company, TradeStock... tradeStocks) {
+        Trade trade = new Trade();
+        trade.setMember(member);
+        trade.setCompany(company);
+        for (TradeStock tradeStock : tradeStocks) {
+            trade.addTradeStock(tradeStock);
+        }
+        trade.setStatus(TradeStatus.TRADE);
+        trade.setTradeDate(LocalDateTime.now());
+        return trade;
+    }
+
+    // == 비즈니스 로직 == //
+    /**
+     * 거래 취소
+     */
+    public void cancel() {
+        if (company.getStatus() == CompanyStatus.COMPLETE) {
+            throw new IllegalStateException("이미 거래 완료된 증권사는 취소가 불가능합니다.");
+        }
+
+        this.setStatus(TradeStatus.CANCEL);
+        for (TradeStock tradeStock : tradeStocks) {
+            tradeStock.cancel();
+        }
+    }
+
+    // == 조회 로직 == //
+    /**
+     * 전체 거래 가격 조회
+     */
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (TradeStock tradeStock : tradeStocks) {
+            totalPrice += tradeStock.getTotalPrice();
+        }
+        return totalPrice;
+    }
+
 
 }

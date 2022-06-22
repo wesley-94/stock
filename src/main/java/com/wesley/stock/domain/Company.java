@@ -20,6 +20,6 @@ public class Company {
     private Address address;
 
     @Enumerated(EnumType.STRING)
-    private CompanyStatus status; // [READY(준비), OPEN(개설)]
+    private CompanyStatus status; // [READY(준비), COMPLETE(완료)]
 
 }
