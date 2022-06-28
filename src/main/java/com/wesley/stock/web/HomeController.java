@@ -5,6 +5,7 @@ import com.wesley.stock.config.auth.dto.SessionUser;
 import com.wesley.stock.service.posts.PostsService;
 import com.wesley.stock.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,20 +15,21 @@ import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
-public class IndexController {
+@Slf4j
+public class HomeController {
 
     private final PostsService postsService;
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model, @LoginUser SessionUser user) {
+    public String home(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAll());
 
         if (user != null) {
             model.addAttribute("userName", user.getName());
         }
 
-        return "index";
+        return "home";
     }
 
     @GetMapping("/posts/save")
