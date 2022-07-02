@@ -1,0 +1,29 @@
+{{>layout/header}}
+
+<div class="col-md-12">
+    <!-- 목록 출력 영역 -->
+    <table class="table table-striped">
+        <thead class="thead-strong">
+        <tr>
+            <th>#</th>
+            <th>이름</th>
+            <th>도시</th>
+            <th>주소</th>
+            <th>우편번호</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#members}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{city}}</td>
+                <td>{{street}}</td>
+                <td>{{zipcode}}</td>
+            </tr>
+        {{/members}}
+        </tbody>
+    </table>
+</div>
+
+{{>layout/footer}}
