@@ -66,4 +66,8 @@ public class TradeService {
 //        return tradeRepository.findAll(tradeSearch);
 //    }
 
+    public List<Trade> findTrades(TradeSearch tradeSearch) {
+        return tradeRepository.findAllByString(tradeSearch);
+    }
+
 }

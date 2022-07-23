@@ -23,12 +23,13 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model, @LoginUser SessionUser user) {
-        model.addAttribute("posts", postsService.findAll());
+//        model.addAttribute("posts", postsService.findAll());
+//
+//        if (user != null) {
+//            model.addAttribute("userName", user.getName());
+//        }
 
-        if (user != null) {
-            model.addAttribute("userName", user.getName());
-        }
-
+        log.info("home controller");
         return "home";
     }
 
