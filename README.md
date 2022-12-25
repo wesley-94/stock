@@ -5,7 +5,8 @@
 
 ## 1. 프로젝트 소개
 ### 프로젝트 개요 및 동기
-인프런에서 김영한 님의 강의 및 이동욱 님의 책을 통해 Spring 및 JPA 에 대해 학습하고 이를 정리하고 체득하기 위해 수행한 프로젝트 입니다.
+인프런에서 김영한 님의 강의 및 이동욱 님의 책을 통해 Spring 및 JPA 에 대해 학습한 후  
+이를 정리하고 체득하기 위해 수행한 프로젝트 입니다.
 - 김영한 님의 강의 수강 목록
   > [스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8)  
   > [스프링 핵심 원리 - 기본편](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8%ED%8E%B8)  
@@ -23,9 +24,9 @@
   > [스프링 부트와 AWS로 혼자 구현하는 웹 서비스](http://www.yes24.com/Product/Goods/83849117)  
   
 ## 2. 기술 스택  
-|Spring MVC|Spring Boot|JPA|Spring Data JPA|Query DSL|
-|----------|-----------|---|---------------|---------|  
-||||||  
+|Spring Boot MVC|JPA|Spring Data JPA|Query DSL|
+|--------------|---|---------------|---------|  
+|![Spring-Boot-MVC-2](https://user-images.githubusercontent.com/56331160/209467801-27dd0e0b-cbd9-4103-9d89-8e9ff46957c7.png)|![jpa](https://user-images.githubusercontent.com/56331160/209467730-f97deff0-b4f9-4ed6-9d25-f8a65262000b.png)|![springdatajpa](https://user-images.githubusercontent.com/56331160/209467739-b4c9f7c6-297e-4f72-86df-ec57ed369dae.png)|![dsl](https://user-images.githubusercontent.com/56331160/209467772-c5c50c1b-77af-4797-89e7-35a969e848b1.png)|
 
 ## 3. 구현 기능
 ### 기능 1
