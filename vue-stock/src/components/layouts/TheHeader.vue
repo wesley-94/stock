@@ -1,14 +1,14 @@
 <template>
-  <!-- <nav class="navbar navbar-expand-sm navbar-dark bg-primary"> -->
+  <nav class="navbar navbar-expand-sm navbar-dark bg-success">
     <div>
-      <h1>&nbsp;주식 종목 제공 서비스</h1>
-      <!-- <RouterLink class="navbar-brand" to="/">STOCK INFO.</RouterLink> -->
+      <!-- <h1>Stock</h1> -->
+      <RouterLink class="navbar-brand" to="/">Stock</RouterLink>
       <!-- <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button> -->
-      <hr />
+      <!-- <hr py-2/> -->
     </div>
-  <!-- </nav> -->
+  </nav>
 
 <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
 </template>
@@ -19,5 +19,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style>
+* {
+  margin: auto;
+}
 </style>
