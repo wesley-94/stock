@@ -1,11 +1,7 @@
 <template>
-    <hr />
-    <div class="container">
-        <p>&nbsp;&nbsp;Copyright © 2023</p>
-        <ul>
-            <li>Contact: {{ email }}</li>
-        </ul>
-    </div>
+    <hr py-4 />
+    <div class="text_center">{{ showText }}
+    </div> 
 </template>
 
 <script>
@@ -13,11 +9,14 @@ export default {
     name: "TheFooter",
     data() {
         return {
-            email: "rladhlthf123@naver.com",
+            showText: "© 2023 Company, Inc. All rights reserved.",
         }
     }
 }
 </script>
 
-<style lang="scss" scoped>
+<style>
+.text_center {
+    text-align: center;
+}
 </style>
