@@ -9,7 +9,7 @@ export default {
     name: "TheFooter",
     data() {
         return {
-            showText: "© 2023 Company, Inc. All rights reserved.",
+            showText: "© 2023 Individual. All rights reserved.",
         }
     }
 }
