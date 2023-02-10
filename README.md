@@ -37,4 +37,5 @@
 
 ## 5. 문제 발생 및 해결 이력 
 (해결 완료 상태는 밑줄로 표시)
-1. AxiosError: Network Error 발생
+1. Axios
+  > CORS 
