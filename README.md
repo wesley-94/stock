@@ -24,9 +24,9 @@
   > [스프링 부트와 AWS로 혼자 구현하는 웹 서비스](http://www.yes24.com/Product/Goods/83849117)  
   
 ## 2. 기술 스택  
-|Spring Boot MVC|JPA|Spring Data JPA|Query DSL|
-|--------------|---|---------------|---------|  
-|![Spring-Boot-MVC-2](https://user-images.githubusercontent.com/56331160/209467801-27dd0e0b-cbd9-4103-9d89-8e9ff46957c7.png)|![jpa](https://user-images.githubusercontent.com/56331160/209467730-f97deff0-b4f9-4ed6-9d25-f8a65262000b.png)|![springdatajpa](https://user-images.githubusercontent.com/56331160/209467739-b4c9f7c6-297e-4f72-86df-ec57ed369dae.png)|![dsl](https://user-images.githubusercontent.com/56331160/209467772-c5c50c1b-77af-4797-89e7-35a969e848b1.png)|
+|Vue.js|Spring Boot MVC|JPA|Spring Data JPA|Query DSL|MySQL|
+|------|---------------|---|---------------|---------|-----|  
+|![vue](https://user-images.githubusercontent.com/56331160/218122343-5fb98241-f4f1-485b-870a-1c5bd123de8b.png)|![Spring-Boot-MVC-2](https://user-images.githubusercontent.com/56331160/209467801-27dd0e0b-cbd9-4103-9d89-8e9ff46957c7.png)|![jpa](https://user-images.githubusercontent.com/56331160/209467730-f97deff0-b4f9-4ed6-9d25-f8a65262000b.png)|![springdatajpa](https://user-images.githubusercontent.com/56331160/209467739-b4c9f7c6-297e-4f72-86df-ec57ed369dae.png)|![dsl](https://user-images.githubusercontent.com/56331160/209467772-c5c50c1b-77af-4797-89e7-35a969e848b1.png)|![mysql](https://user-images.githubusercontent.com/56331160/218122432-918086e1-6e9e-4cc7-aa18-5a31bf593477.png)|
 
 ## 3. 구현 기능
 ### 기능 1
@@ -37,8 +37,4 @@
 
 ## 5. 문제 발생 및 해결 이력 
 (해결 완료 상태는 밑줄로 표시)
-### @ 2022년 12월 23일
-  > 1) "회원 가입" 후 "회원 목록"에서 조회를 할 때 데이터가 사라져 있음 (정상적으로 저장 불가 상태)  
-  > 2) "주식 등록" 화면에서 정보를 입력하고 "등록 완료" 버튼을 클릭 (저장)을 하려고 하면 정상적으로 되지 않음  
-  > 3) "주식 목록" 화면에서 "메인 페이지로 이동" 버튼이 없음  
-  > 4) DB에 저장 가능한지 확인 핊요
+1. Axios 통신 시 CORS 문제 발생 
