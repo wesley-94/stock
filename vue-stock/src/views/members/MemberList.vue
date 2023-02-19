@@ -4,7 +4,7 @@
         <table class="table table-striped">
             <thead class="thead-strong">
             <tr>
-                <th>#</th> 
+                <th>ID</th> 
                 <th>이름</th> 
                 <th>도시</th> 
                 <th>거리</th> 
@@ -13,12 +13,12 @@
             </thead>
             <tbody id="tbody">
                 <!-- members 정보 가져와야 함 / 현재는 하드코딩 -->
-                <tr>
-                    <td>1</td>
-                    <td>김외솔</td>
-                    <td>서울특별시</td>
-                    <td>은평구 진관1로</td>
-                    <td>03310</td>
+                <tr v-for='(item, index) in dataTable' :key='index'>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.address.city }}</td>
+                    <td>{{ item.address.street }}</td>
+                    <td>{{ item.address.zipcode }}</td>
                 </tr>
             </tbody>
         </table>
@@ -29,9 +29,20 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { http } from '@/api/index.js';
 
 const router = useRouter();
+const dataTable = ref([]);
+
+const searchList = async () => {
+    const { data } = await http.get('/members', {});
+    dataTable.value = data;
+};
+
+searchList();
+
 const goHomePage = () => {
     router.push('/');
 }
