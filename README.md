@@ -1,7 +1,7 @@
 # 주식 종목 정보 서비스
 
 ## 0. 메인 화면
-<img width="494" alt="메인 화면" src="https://user-images.githubusercontent.com/56331160/209466622-04c4abce-210a-4b19-bdb9-78493daf2ded.png">
+<img width="494" alt="메인 화면" src="https://user-images.githubusercontent.com/56331160/219951104-0fb77688-0a9a-415a-9cd9-c4aa6d5d9d64.png">
 
 ## 1. 프로젝트 소개
 ### 프로젝트 개요 및 동기
@@ -29,12 +29,13 @@
 |![vue](https://user-images.githubusercontent.com/56331160/218122343-5fb98241-f4f1-485b-870a-1c5bd123de8b.png)|![Spring-Boot-MVC-2](https://user-images.githubusercontent.com/56331160/209467801-27dd0e0b-cbd9-4103-9d89-8e9ff46957c7.png)|![jpa](https://user-images.githubusercontent.com/56331160/209467730-f97deff0-b4f9-4ed6-9d25-f8a65262000b.png)|![springdatajpa](https://user-images.githubusercontent.com/56331160/209467739-b4c9f7c6-297e-4f72-86df-ec57ed369dae.png)|![dsl](https://user-images.githubusercontent.com/56331160/209467772-c5c50c1b-77af-4797-89e7-35a969e848b1.png)|![mysql](https://user-images.githubusercontent.com/56331160/218122432-918086e1-6e9e-4cc7-aa18-5a31bf593477.png)|
 
 ## 3. 구현 기능
-### 기능 1
+### CRUD
 
 ## 4. 배운 점 & 아쉬운 점
 ### 배운 점
 ### 아쉬운 점
 
 ## 5. 문제 발생 및 해결 이력 
-(해결 완료 상태는 밑줄로 표시)
-1. Axios 통신 시 CORS 문제 발생 
+1. Axios 통신 시 CORS 문제 발생 [해결 완료]
+   - vue.config.js 파일에서, proxy 설정
+   - WebConfig 파일에서, addCorsMappings(CorsRegistry registry) 함수 추가
