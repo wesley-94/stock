@@ -1,6 +1,10 @@
 package com.wesley.stock.repository;
 
 import com.wesley.stock.domain.Member;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -20,6 +24,11 @@ public class MemberRepository {
     public Member findOne(Long id) {
         return em.find(Member.class, id);
     }
+
+    public long count() {
+        return em.createQuery("select count(*) from Member m", Long.class)
+                .getSingleResult();
+    };
 
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class)

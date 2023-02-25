@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -42,12 +45,17 @@ public class MemberController {
     }
 
     @GetMapping(value = "/members")
-    public List list(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
-
-//        return "members/memberList";
-        return members;
+    public Map list(Model model) {
+        Map returnMap = new HashMap();
+        // 전체 회원 건수 count
+        Long count = memberService.count();
+        returnMap.put("count", count);
+        if (count > 0) {
+            List<Member> members = memberService.findMembers();
+            model.addAttribute("members", members);
+            returnMap.put("members", members);
+        }
+        return returnMap;
     }
 
 }
