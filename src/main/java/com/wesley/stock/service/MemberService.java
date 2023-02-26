@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional(readOnly = true)
@@ -41,11 +42,16 @@ public class MemberService {
         return memberRepository.count();
     }
 
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
+    }
+
     /**
      * 전체 회원 조회
      */
-    public List<Member> findMembers() {
-        return memberRepository.findAll();
+    public List<Member> findMembers(Map parameterMap) {
+//        return memberRepository.findAll();
+        return memberRepository.selectMemberByPaging(parameterMap);
     }
 
     public Member findOne(Long memberId) {

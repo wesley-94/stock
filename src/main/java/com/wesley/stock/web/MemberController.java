@@ -44,14 +44,14 @@ public class MemberController {
 //        return "redirect:/";
     }
 
-    @GetMapping(value = "/members")
-    public Map list(Model model) {
+    @PostMapping(value = "/members")
+    public Map list(Model model, @RequestBody Map parameterMap) {
         Map returnMap = new HashMap();
         // 전체 회원 건수 count
         Long count = memberService.count();
         returnMap.put("count", count);
         if (count > 0) {
-            List<Member> members = memberService.findMembers();
+            List<Member> members = memberService.findMembers(parameterMap);
             model.addAttribute("members", members);
             returnMap.put("members", members);
         }

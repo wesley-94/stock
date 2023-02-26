@@ -2,7 +2,9 @@ package com.wesley.stock.repository;
 
 import com.wesley.stock.domain.Member;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Repository;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class MemberRepository {
@@ -32,6 +35,16 @@ public class MemberRepository {
 
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class)
+                .getResultList();
+    }
+
+    public List<Member> selectMemberByPaging(Map parameterMap) {
+        int pageLimit = (int) parameterMap.get("pageLimit");
+        int startIdx = ((int) parameterMap.get("currentPage") - 1) * pageLimit;
+
+        return em.createQuery("select m from Member m", Member.class)
+                .setFirstResult(startIdx)
+                .setMaxResults(pageLimit)
                 .getResultList();
     }
 
