@@ -36,7 +36,7 @@
         />
         
         <div class="mt-2 text_center">
-            <button class="btn btn-secondary" @click="goHomePage">메인 페이지로 이동</button>
+            <button class="btn btn-secondary me-2" @click="goHomePage">메인 페이지로 이동</button>
         </div>
     </template>
 </template>
@@ -68,7 +68,6 @@ const changeLimit = value => {
 
 const searchList = async () => {
     const { data } = await http.post('/members', { ...searchParam.value });
-    console.log(data);
     totalCount.value = data.count;
     dataTable.value = data.members;
     isExist.value = (data.members.length > 0);

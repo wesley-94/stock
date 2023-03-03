@@ -3,7 +3,7 @@
     <hr>
     <div class="col-md-12">
         <div class="col-md-4">
-            <form>
+            <!-- <form> -->
                 <div class="form-group">
                     <label for="name">이름</label>
                     <input type="text" class="form-control" v-model="form.name" placeholder="이름을 입력하세요" />
@@ -26,19 +26,27 @@
                 <br/>
                 <div class="text_center">
                     <button class="btn btn-secondary me-2" @click="goHomePage">이전 페이지로</button>
-                    <!-- 등록 기능 구현 예정 -->
                     <button class="btn btn-primary" @click="memberSave">등록</button>
                 </div>
-            </form>
+            <!-- </form> -->
             <br/>
         </div>
     </div>
+
+    <!-- Modal -->
+    <Teleport to="#modal">
+        <PostModal
+            v-model="show"
+            :message="modalMessage"
+        />
+    </Teleport>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { http } from '@/api/index.js';
+import PostModal from '@/components/posts/PostModal.vue';
 
 // import { useAxios } from '@/hooks/useAxios';
 
@@ -50,28 +58,21 @@ const form = ref({
     zipcode: null,
 });
 
-// const { execute } = useAxios(
-//     '/members/new',
-//     {
-//         method: 'post',
-//     },
-//     {
-//         immediate: false,
-//         onSuccess: () => {
-//             router.push({ name: 'MemberList' });
-//         },
-//         onError: err => {
-//             console.log('error: ' + err);
-//         },
-//     },
-// );
-
 // 등록 함수
 const memberSave = async () => {
-    // execute({ ...form.value, createdAt: Date.now() });
+    if (form.value.name == null || form.value.name == '') {
+        openModal(modalMessage);
+        return;
+    }
+
+    if (confirm('저장 하시겠습니까?') === false) {
+        return;
+    }
+
     try {
         await http.post('/members/new', { ...form.value });
-        // router.push({ name: 'MemberList' });
+        alert('저장이 완료되었습니다.');
+        router.push({ name: 'MemberList' });
     } catch (error) {
         console.error(error);
     }
@@ -80,6 +81,14 @@ const memberSave = async () => {
 const goHomePage = () => {
     router.push('/');
 };
+
+// modal
+const show = ref(false);
+const modalMessage = ref('이름은 필수 입력 값입니다.');
+
+const openModal = () => {
+    show.value = true;
+}
 
 </script>
 
