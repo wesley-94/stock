@@ -36,7 +36,15 @@
 
 ## 4. 배운 점 & 아쉬운 점
 ### 배운 점
+1. Migration 작업
+    - Front-End
+        - UI
+            - From Mustache.js to Vue.js
+    - Back-End
+        - DB
+            - From H2 Database to MySQL
 ### 아쉬운 점
+1. 구현 기능의 범위를 좁힌 상태 (향후 확장 예정)
 
 ## 5. 문제 발생 및 해결 이력 
 1. Axios 통신 시 CORS 문제 발생 [해결 완료]
