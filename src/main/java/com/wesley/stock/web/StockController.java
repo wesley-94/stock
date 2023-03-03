@@ -1,18 +1,18 @@
 package com.wesley.stock.web;
 
+import com.wesley.stock.domain.Member;
 import com.wesley.stock.domain.Stock;
 import com.wesley.stock.service.StockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class StockController {
 
@@ -26,10 +26,11 @@ public class StockController {
     }
 
     @PostMapping(value = "/stocks/new")
-    public String create(StockForm form) {
+    public void create(@RequestBody StockForm form) {
 
         Stock stock = new Stock();
         stock.setStockName(form.getStockName());
+        stock.setSector(form.getSector());
         stock.setCurrentPrice(form.getCurrentPrice());
         stock.setAllTimeHighPrice(form.getAllTimeHighPrice());
         stock.setAllTimeLowPrice(form.getAllTimeLowPrice());
@@ -37,20 +38,27 @@ public class StockController {
         stock.setEstimatePER(form.getEstimatePER());
         stock.setPriceBookValueRatio(form.getPriceBookValueRatio());
         stock.setDividendRate(form.getDividendRate());
-//        stock.setQuantity(form.getQuantity());
+        stock.setQuantity(form.getQuantity());
 
         stockService.saveStock(stock);
-        return "redirect:/stocks";
+//        return "redirect:/stocks";
     }
 
     /**
      * 주식 종목 목록
      */
-    @GetMapping(value = "/stocks")
-    public String list(Model model) {
-        List<Stock> stocks = stockService.findStocks();
-        model.addAttribute("stocks", stocks);
-        return "stocks/stockList";
+    @PostMapping(value = "/stocks")
+    public Map list(Model model, @RequestBody Map parameterMap) {
+        Map returnMap = new HashMap();
+        // 전체 회원 건수 count
+        Long count = stockService.count();
+        returnMap.put("count", count);
+        if (count > 0) {
+            List<Stock> stocks = stockService.findStocks(parameterMap);
+            model.addAttribute("stocks", stocks);
+            returnMap.put("stocks", stocks);
+        }
+        return returnMap;
     }
 
     /**
