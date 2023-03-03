@@ -6,7 +6,6 @@
             </div>
         </template>
         <template #actions>
-            <button type="button" class="btn btn-primary" @click="closeModal">확인</button>
             <button type="button" class="btn btn-secondary" @click="closeModal">닫기</button>
         </template>
     </AppModal>
@@ -30,7 +29,10 @@ const show = computed({
     },
 })
 
-const closeModal = () => (show.value = false);
+const closeModal = () => {
+    show.value = false;
+};
+
 </script>
 
 <style lang="scss" scoped></style>
