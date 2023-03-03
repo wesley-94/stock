@@ -29,7 +29,10 @@
 |![vue](https://user-images.githubusercontent.com/56331160/218122343-5fb98241-f4f1-485b-870a-1c5bd123de8b.png)|![Spring-Boot-MVC-2](https://user-images.githubusercontent.com/56331160/209467801-27dd0e0b-cbd9-4103-9d89-8e9ff46957c7.png)|![jpa](https://user-images.githubusercontent.com/56331160/209467730-f97deff0-b4f9-4ed6-9d25-f8a65262000b.png)|![springdatajpa](https://user-images.githubusercontent.com/56331160/209467739-b4c9f7c6-297e-4f72-86df-ec57ed369dae.png)|![dsl](https://user-images.githubusercontent.com/56331160/209467772-c5c50c1b-77af-4797-89e7-35a969e848b1.png)|![mysql](https://user-images.githubusercontent.com/56331160/218122432-918086e1-6e9e-4cc7-aa18-5a31bf593477.png)|
 
 ## 3. 구현 기능
-### CRUD
+1. Front-End
+    - Modal
+2. Back-End
+    - Paging
 
 ## 4. 배운 점 & 아쉬운 점
 ### 배운 점
