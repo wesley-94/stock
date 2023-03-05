@@ -5,13 +5,11 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { createPinia } from 'pinia';
-// import globalVars from './utils/globalVars';
-// import globalFunctions from './utils/globalFunctions';
+import globalComponents from './plugins/global-components.js';
 
 const app = createApp(App);
 
 app.use(router);
-// app.use(globalVars);
-// app.use(globalFunctions);
+app.use(globalComponents);
 app.use(createPinia());
 app.mount('#app');
