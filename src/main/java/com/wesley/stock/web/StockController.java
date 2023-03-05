@@ -50,7 +50,7 @@ public class StockController {
     @PostMapping(value = "/stocks")
     public Map list(Model model, @RequestBody Map parameterMap) {
         Map returnMap = new HashMap();
-        // 전체 회원 건수 count
+        // 전체 주식 종목 건수 count
         Long count = stockService.count();
         returnMap.put("count", count);
         if (count > 0) {
@@ -61,11 +61,20 @@ public class StockController {
         return returnMap;
     }
 
+    @PostMapping(value = "/stocks/id")
+    public Stock selectStockById(Model model, @RequestBody Map parameterMap) {
+        Long stockId = Long.valueOf((int) parameterMap.get("stockId"));
+        Stock stock = stockService.findOne(stockId);
+        model.addAttribute("stock", stock);
+
+        return stock;
+    }
+
     /**
      * 주식 종목 수정 폼
      */
     @GetMapping(value = "/stocks/update/{stockId}")
-    public String updateStockForm(@PathVariable("stockId") Long stockId, Model model) {
+    public void updateStockForm(@PathVariable("stockId") Long stockId, Model model) {
         Stock stock = (Stock) stockService.findOne(stockId);
 
         StockForm form = new StockForm();
@@ -78,18 +87,22 @@ public class StockController {
         form.setEstimatePER(stock.getEstimatePER());
         form.setPriceBookValueRatio(stock.getPriceBookValueRatio());
         form.setDividendRate(stock.getDividendRate());
+        form.setQuantity(stock.getQuantity());
 
         model.addAttribute("form", form);
-        return "stocks/updateStockForm";
+//        return "stocks/updateStockForm";
     }
 
     /**
      * 주식 종목 수정
      */
-    @PostMapping(value = "/stocks/update/{stockId}")
-    public String updateStock(@ModelAttribute("form") StockForm form) {
+    @PostMapping(value = "/stocks/update")
+//    public void updateStock(@ModelAttribute("form") StockForm form) {
+    public void updateStock(@RequestBody StockForm form) {
         Stock stock = new Stock();
+        stock.setId(form.getId());
         stock.setStockName(form.getStockName());
+        stock.setSector(form.getSector());
         stock.setCurrentPrice(form.getCurrentPrice());
         stock.setAllTimeHighPrice(form.getAllTimeHighPrice());
         stock.setAllTimeLowPrice(form.getAllTimeLowPrice());
@@ -97,9 +110,16 @@ public class StockController {
         stock.setEstimatePER(form.getEstimatePER());
         stock.setPriceBookValueRatio(form.getPriceBookValueRatio());
         stock.setDividendRate(form.getDividendRate());
+        stock.setQuantity(form.getQuantity());
 
         stockService.saveStock(stock);
-        return "redirect:/stocks";
+//        return "redirect:/stocks";
+    }
+
+    @PostMapping(value = "/stocks/delete")
+    public void deleteStock(@RequestBody Map parameterMap) {
+        Long stockId = Long.valueOf((int) parameterMap.get("stockId"));
+        stockService.deleteStock(stockId);
     }
 
 }
