@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text_center mt-3">주식 종목 등록</h1>
+    <h3 class="text_center mt-3">주식 종목 등록</h3>
     <hr>
     <div class="col-md-12">
         <div class="col-md-4">
@@ -56,7 +56,7 @@
                 <br/>
                 <div class="text_center">
                     <button class="btn btn-secondary me-2" @click="goHomePage">이전 페이지로</button>
-                    <button class="btn btn-primary" @click="stockSave">등록 완료</button>
+                    <button class="btn btn-primary" @click="stockSave">등록</button>
                 </div>
             <!-- </form> -->
             <br/>

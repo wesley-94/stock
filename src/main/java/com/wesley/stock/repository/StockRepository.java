@@ -27,6 +27,11 @@ public class StockRepository {
         }
     }
 
+    public void delete(Long stockId) {
+        Stock stock = findOne(stockId);
+        em.remove(stock);
+    }
+
     public Stock findOne(Long id) {
         return em.find(Stock.class, id);
     }

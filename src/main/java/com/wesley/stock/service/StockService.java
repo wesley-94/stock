@@ -28,13 +28,22 @@ public class StockService {
         stockRepository.save(stock);
     }
 
+    @Transactional
+    public void deleteStock(Long stockId) {
+        stockRepository.delete(stockId);
+    }
+
     public List<Stock> findStocks() {
         return stockRepository.findAll();
     }
 
     public List<Stock> findStocks(Map parameterMap) {
 //        return stockRepository.findAll();
-        return stockRepository.selectStockByPaging(parameterMap);
+        if (parameterMap.get("pageLimit") == null) {
+            return stockRepository.findAll();
+        } else {
+            return stockRepository.selectStockByPaging(parameterMap);
+        }
     }
 
     public Stock findOne(Long stockId) {
