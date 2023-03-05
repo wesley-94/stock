@@ -32,6 +32,7 @@
 1. Front-End
     - Modal
 2. Back-End
+    - CRUD
     - Paging
 
 ## 4. 배운 점 & 아쉬운 점
