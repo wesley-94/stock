@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text_center mt-3">회원 등록</h1>
+    <h3 class="text_center mt-3">회원 등록</h3>
     <hr>
     <div class="col-md-12">
         <div class="col-md-4">

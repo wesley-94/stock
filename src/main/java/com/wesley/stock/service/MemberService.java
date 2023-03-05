@@ -51,7 +51,11 @@ public class MemberService {
      */
     public List<Member> findMembers(Map parameterMap) {
 //        return memberRepository.findAll();
-        return memberRepository.selectMemberByPaging(parameterMap);
+        if (parameterMap.get("pageLimit") == null) {
+            return memberRepository.findAll();
+        } else {
+            return memberRepository.selectMemberByPaging(parameterMap);
+        }
     }
 
     public Member findOne(Long memberId) {
