@@ -1,5 +1,6 @@
 package com.wesley.stock.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,7 @@ public class Company {
     private Long id;
 
     @OneToOne(mappedBy = "company", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Trade trade;
 
     @Embedded
