@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional(readOnly = true)
@@ -18,6 +19,13 @@ public class TradeService {
     private final MemberRepository memberRepository;
     private final TradeRepository tradeRepository;
     private final StockRepository stockRepository;
+
+    /**
+     * 전체 거래 건수 count
+     */
+    public long count(Map parameterMap) {
+        return tradeRepository.count(parameterMap);
+    }
 
     /**
      * 거래
@@ -66,8 +74,13 @@ public class TradeService {
 //        return tradeRepository.findAll(tradeSearch);
 //    }
 
-    public List<Trade> findTrades(TradeSearch tradeSearch) {
-        return tradeRepository.findAllByString(tradeSearch);
+//    public List<Trade> findTrades(TradeSearch tradeSearch) {
+//        return tradeRepository.findAllByString(tradeSearch);
+//    }
+
+    public List findTrades(Map parameterMap) {
+//        return tradeRepository.findAllByString(tradeSearch);
+        return tradeRepository.selectTradeByPaging(parameterMap);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.wesley.stock.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,15 +19,19 @@ public class Trade {
     @Column(name = "trade_id")
     private Long id;
     
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
+    @JsonIgnore
     private Member member; // 계좌 회원
 
     @OneToMany(mappedBy = "trade", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<TradeStock> tradeStocks = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
+    @JsonIgnore
     private Company company; // 증권사 정보
 
     private LocalDateTime tradeDate; // 거래 시간

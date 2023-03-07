@@ -1,5 +1,6 @@
 package com.wesley.stock.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +17,12 @@ public class TradeStock {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stock_id")
+    @JsonIgnore
     private Stock stock; // 거래 주식
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trade_id")
+    @JsonIgnore
     private Trade trade; // 거래
 
     private int tradePrice; // 거래 가격

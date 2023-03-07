@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class TradeController {
 
@@ -34,18 +36,38 @@ public class TradeController {
     }
 
     @PostMapping(value = "/trade")
-    public String trade(@RequestParam("memberId") Long memberId, @RequestParam("stockId") Long stockId,
-                        @RequestParam("count") int count) {
+    public void trade(@RequestBody TradeForm form) {
+        // parameter 값 추출
+        Long memberId = form.getMemberId();
+        Long stockId = form.getStockId();
+        int count = form.getCount();
+
         tradeService.trade(memberId, stockId, count);
-        return "redirect:/trades";
+//        return "redirect:/trades";
     }
 
-    @GetMapping(value = "/trades")
-    public String tradeList(@ModelAttribute("tradeSearch") TradeSearch tradeSearch, Model model) {
-        List<Trade> trades = tradeService.findTrades(tradeSearch);
-        model.addAttribute("trades", trades);
+    @PostMapping(value = "/trades")
+    public Map tradeList(Model model, @RequestBody Map parameterMap
+//                            @ModelAttribute("tradeSearch") TradeSearch tradeSearch
+    ) {
 
-        return "trade/tradeList";
+//        System.out.println("tradeSearch = " + tradeSearch);
+        Map returnMap = new HashMap();
+        // 전체 거래 건수 count
+        Long count = tradeService.count(parameterMap);
+        returnMap.put("count", count);
+        if (count > 0) {
+//            List<Trade> trades = tradeService.findTrades(tradeSearch);
+            List trades = tradeService.findTrades(parameterMap);
+            model.addAttribute("trades", trades);
+            returnMap.put("trades", trades);
+        } else {
+            returnMap.put("trades", null);
+        }
+
+        return returnMap;
+
+//        return "trade/tradeList";
     }
 
     @PostMapping(value = "/trades/{tradeId}/cancel")
