@@ -1,5 +1,6 @@
 package com.wesley.stock.service;
 
+import com.querydsl.core.Tuple;
 import com.wesley.stock.domain.*;
 import com.wesley.stock.repository.MemberRepository;
 import com.wesley.stock.repository.StockRepository;
@@ -67,20 +68,9 @@ public class TradeService {
 
     }
 
-    /**
-     * 거래 검색
-     */
-//    public List<Trade> findTrades(TradeSearch tradeSearch) {
-//        return tradeRepository.findAll(tradeSearch);
-//    }
-
-//    public List<Trade> findTrades(TradeSearch tradeSearch) {
-//        return tradeRepository.findAllByString(tradeSearch);
-//    }
-
     public List findTrades(Map parameterMap) {
-//        return tradeRepository.findAllByString(tradeSearch);
-        return tradeRepository.selectTradeByPaging(parameterMap);
+//        return tradeRepository.selectTradeByPaging(parameterMap);
+        return tradeRepository.tradeWithQueryDsl(parameterMap);
     }
 
 }

@@ -1,20 +1,20 @@
 package com.wesley.stock.web;
 
-import com.wesley.stock.domain.Member;
-import com.wesley.stock.domain.Stock;
-import com.wesley.stock.domain.Trade;
-import com.wesley.stock.domain.TradeSearch;
+import com.querydsl.core.Tuple;
+import com.wesley.stock.domain.*;
 import com.wesley.stock.service.MemberService;
 import com.wesley.stock.service.StockService;
 import com.wesley.stock.service.TradeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.querydsl.core.types.Projections.tuple;
 
 @RestController
 @RequiredArgsConstructor
@@ -47,27 +47,20 @@ public class TradeController {
     }
 
     @PostMapping(value = "/trades")
-    public Map tradeList(Model model, @RequestBody Map parameterMap
-//                            @ModelAttribute("tradeSearch") TradeSearch tradeSearch
-    ) {
-
-//        System.out.println("tradeSearch = " + tradeSearch);
+    public Map tradeList(Model model, @RequestBody Map parameterMap) {
         Map returnMap = new HashMap();
         // 전체 거래 건수 count
         Long count = tradeService.count(parameterMap);
         returnMap.put("count", count);
         if (count > 0) {
-//            List<Trade> trades = tradeService.findTrades(tradeSearch);
             List trades = tradeService.findTrades(parameterMap);
             model.addAttribute("trades", trades);
             returnMap.put("trades", trades);
+
         } else {
             returnMap.put("trades", null);
         }
-
         return returnMap;
-
-//        return "trade/tradeList";
     }
 
     @PostMapping(value = "/trades/{tradeId}/cancel")

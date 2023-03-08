@@ -1,8 +1,10 @@
 package com.wesley.stock.repository;
 
-import com.wesley.stock.domain.Trade;
-import com.wesley.stock.domain.TradeSearch;
-import com.wesley.stock.domain.TradeStatus;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.Tuple;
+import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.wesley.stock.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -10,6 +12,7 @@ import org.springframework.util.StringUtils;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -123,6 +126,61 @@ public class TradeRepository {
         }
 
         return query.getResultList();
+    }
+
+    // QueryDsl 활용
+    public List tradeWithQueryDsl(Map parameterMap) {
+
+        int pageLimit = (int) parameterMap.get("pageLimit");
+        int startIdx = ((int) parameterMap.get("currentPage") - 1) * pageLimit;
+
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+
+        QTrade trade = QTrade.trade;
+        QMember member = QMember.member;
+        QTradeStock tradeStock = QTradeStock.tradeStock;
+        QStock stock = QStock.stock;
+
+        BooleanBuilder builder = new BooleanBuilder();
+
+        // 거래 상태 검색
+        if ((String) parameterMap.get("status") != null) {
+            if ("TRADE".equals((String) parameterMap.get("status"))) {
+                builder.and(trade.status.eq(TradeStatus.TRADE));
+            } else {
+                builder.and(trade.status.eq(TradeStatus.CANCEL));
+            }
+        }
+
+        // 회원 이름 검색
+        if ((String) parameterMap.get("name") != null) {
+            builder.and(member.name.eq((String) parameterMap.get("name")));
+        }
+
+        List<Tuple> result = queryFactory.select(trade.id, member.name, stock.stockName,
+                        tradeStock.tradePrice, tradeStock.count, trade.status)
+                .from(trade)
+                .join(trade.member, member)
+                .join(trade.tradeStocks, tradeStock)
+                .join(tradeStock.stock, stock)
+                .where(builder)
+                .offset(startIdx)
+                .limit(pageLimit)
+                .fetch();
+
+        List finalList = new ArrayList();
+        for (Tuple row : result) {
+            List tempList = new ArrayList();
+            tempList.add(row.get(trade.id));
+            tempList.add(row.get(member.name));
+            tempList.add(row.get(stock.stockName));
+            tempList.add(row.get(tradeStock.tradePrice));
+            tempList.add(row.get(tradeStock.count));
+            tempList.add(row.get(trade.status));
+            finalList.add(tempList);
+        }
+
+        return finalList;
     }
 
     // 우선 JPQL 로 처리 (-> 향후에 QueryDsl 로 변경 예정)
