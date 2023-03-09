@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -170,14 +171,14 @@ public class TradeRepository {
 
         List finalList = new ArrayList();
         for (Tuple row : result) {
-            List tempList = new ArrayList();
-            tempList.add(row.get(trade.id));
-            tempList.add(row.get(member.name));
-            tempList.add(row.get(stock.stockName));
-            tempList.add(row.get(tradeStock.tradePrice));
-            tempList.add(row.get(tradeStock.count));
-            tempList.add(row.get(trade.status));
-            finalList.add(tempList);
+            Map tempMap = new HashMap();
+            tempMap.put("id", row.get(trade.id));
+            tempMap.put("memberName", row.get(member.name));
+            tempMap.put("stockName", row.get(stock.stockName));
+            tempMap.put("tradePrice", row.get(tradeStock.tradePrice));
+            tempMap.put("quantity", row.get(tradeStock.count));
+            tempMap.put("status", row.get(trade.status));
+            finalList.add(tempMap);
         }
 
         return finalList;

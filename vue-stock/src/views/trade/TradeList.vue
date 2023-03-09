@@ -29,12 +29,12 @@
                     </thead>
                     <tbody id="tbody">
                         <tr v-for='(item, index) in dataTable' :key='index'>
-                            <td>{{ item[0] }}</td>
-                            <td>{{ item[1] }}</td>
-                            <td>{{ item[2] }}</td>
-                            <td>{{ item[3] }}</td>
-                            <td>{{ item[4] }}</td>
-                            <td>{{ item[5] }}</td>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.memberName }}</td>
+                            <td>{{ item.stockName }}</td>
+                            <td>{{ item.tradePrice }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.status }}</td>
                         </tr>
                     </tbody>
                 </table>
