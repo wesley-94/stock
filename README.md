@@ -34,6 +34,7 @@
 2. Back-End
     - CRUD
     - Paging
+    - Spring Security OAuth2 
 
 ## 4. 배운 점 & 아쉬운 점
 ### 배운 점
