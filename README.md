@@ -37,7 +37,10 @@
 2. Back-End
     - CRUD
     - Paging
-    - Spring Security OAuth2 
+    - Spring Security OAuth2
+3. DB
+
+![db_diagram](https://user-images.githubusercontent.com/56331160/224488572-a0ffa5e0-d8ec-4e1d-a3b7-5382c25a1351.png)
 
 ## 4. 배운 점 & 아쉬운 점
 ### 배운 점
