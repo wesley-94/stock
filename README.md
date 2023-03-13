@@ -5,8 +5,11 @@
 
 ## 1. 프로젝트 소개
 ### 프로젝트 개요 및 동기
-인프런에서 김영한 님의 강의 및 이동욱 님의 책을 통해 Spring 및 JPA 에 대해 학습한 후  
+짐코딩 클럽에서 Vue3 에 대해, 인프런에서 김영한 님의 강의 및 이동욱 님의 책을 통해 Spring 및 JPA 에 대해 학습한 후  
 이를 정리하고 체득하기 위해 수행한 프로젝트 입니다.
+- 짐코딩 님의 강의 수강 목록
+  > [Vue3 완벽 마스터 : 기본편](https://gymcoding.teachable.com/p/vue3)  
+  > [Vue3 완벽 마스터 : 실전편](https://gymcoding.teachable.com/p/vue3-practice)
 - 김영한 님의 강의 수강 목록
   > [스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8)  
   > [스프링 핵심 원리 - 기본편](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8%ED%8E%B8)  
@@ -34,6 +37,10 @@
 2. Back-End
     - CRUD
     - Paging
+    - Spring Security OAuth2
+3. DB
+
+![db_diagram](https://user-images.githubusercontent.com/56331160/224488572-a0ffa5e0-d8ec-4e1d-a3b7-5382c25a1351.png)
 
 ## 4. 배운 점 & 아쉬운 점
 ### 배운 점
@@ -46,6 +53,9 @@
             - From H2 Database to MySQL
 ### 아쉬운 점
 1. 구현 기능의 범위를 좁힌 상태 (향후 확장 예정)
+   - 데이터 조회 시 Entity 를 그대로 노출하는 문제 존재
+      - Entity 대신 DTO 를 사용하도록 변경 필요
+2. 테스트 코드 작성 미흡
 
 ## 5. 문제 발생 및 해결 이력 
 1. Axios 통신 시 CORS 문제 발생 [해결 완료]
