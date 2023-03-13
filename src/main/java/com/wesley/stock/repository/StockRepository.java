@@ -1,5 +1,6 @@
 package com.wesley.stock.repository;
 
+import com.wesley.stock.annotation.Trace;
 import com.wesley.stock.domain.Stock;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

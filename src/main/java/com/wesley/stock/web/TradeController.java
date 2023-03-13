@@ -1,6 +1,6 @@
 package com.wesley.stock.web;
 
-import com.querydsl.core.Tuple;
+import com.wesley.stock.annotation.Trace;
 import com.wesley.stock.domain.*;
 import com.wesley.stock.service.MemberService;
 import com.wesley.stock.service.StockService;
@@ -9,12 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.querydsl.core.types.Projections.tuple;
 
 @RestController
 @RequiredArgsConstructor

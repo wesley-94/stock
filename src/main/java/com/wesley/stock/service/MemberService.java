@@ -1,5 +1,6 @@
 package com.wesley.stock.service;
 
+import com.wesley.stock.annotation.Trace;
 import com.wesley.stock.domain.Member;
 import com.wesley.stock.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;

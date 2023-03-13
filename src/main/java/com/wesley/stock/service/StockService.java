@@ -1,5 +1,6 @@
 package com.wesley.stock.service;
 
+import com.wesley.stock.annotation.Trace;
 import com.wesley.stock.domain.Stock;
 import com.wesley.stock.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,11 +24,13 @@ public class StockService {
         return stockRepository.count();
     }
 
+    @Trace
     @Transactional
     public void saveStock(Stock stock) {
         stockRepository.save(stock);
     }
 
+    @Trace
     @Transactional
     public void deleteStock(Long stockId) {
         stockRepository.delete(stockId);
@@ -37,6 +40,7 @@ public class StockService {
         return stockRepository.findAll();
     }
 
+    @Trace
     public List<Stock> findStocks(Map parameterMap) {
 //        return stockRepository.findAll();
         if (parameterMap.get("pageLimit") == null) {
@@ -46,6 +50,7 @@ public class StockService {
         }
     }
 
+    @Trace
     public Stock findOne(Long stockId) {
         return stockRepository.findOne(stockId);
     }

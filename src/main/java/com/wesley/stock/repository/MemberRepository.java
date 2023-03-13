@@ -1,5 +1,6 @@
 package com.wesley.stock.repository;
 
+import com.wesley.stock.annotation.Trace;
 import com.wesley.stock.domain.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

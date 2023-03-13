@@ -1,5 +1,6 @@
 package com.wesley.stock.web;
 
+import com.wesley.stock.annotation.Trace;
 import com.wesley.stock.domain.Member;
 import com.wesley.stock.domain.Stock;
 import com.wesley.stock.service.StockService;

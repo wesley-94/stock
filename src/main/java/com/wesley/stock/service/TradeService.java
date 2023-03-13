@@ -1,6 +1,7 @@
 package com.wesley.stock.service;
 
 import com.querydsl.core.Tuple;
+import com.wesley.stock.annotation.Trace;
 import com.wesley.stock.domain.*;
 import com.wesley.stock.repository.MemberRepository;
 import com.wesley.stock.repository.StockRepository;

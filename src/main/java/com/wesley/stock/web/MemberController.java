@@ -1,10 +1,12 @@
 package com.wesley.stock.web;
 
+import com.wesley.stock.annotation.Trace;
 import com.wesley.stock.domain.Address;
 import com.wesley.stock.domain.Member;
 import com.wesley.stock.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,8 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 public class MemberController {
+
+    protected static final Log LOG = LogFactory.getLog(MemberController.class);
 
     private final MemberService memberService;
 
@@ -32,6 +36,7 @@ public class MemberController {
 //        if (result.hasErrors()) {
 //            return "members/createMemberForm";
 //        }
+        LOG.info("MemberController create Start!");
 
         Address address = new Address(form.getCity(), form.getStreet(), form.getZipcode());
         Member member = new Member();
